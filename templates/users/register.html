@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Register  {% endblock title %}
+
+{% block content %}
+<h2>Register page</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+
+    <button type="submit">SAQLASH</button>
+</form>
+
+{% endblock content %}

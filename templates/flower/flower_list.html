@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Flowers  {% endblock title %}
+
+{% block content %}
+<h2>Landing page</h2>
+<form method="get">
+   <input type="text" placeholder="Qidiruv" id="search" name="q" value="{{ search_query }}">
+   <button >Search</button>
+</form><br><br>
+<div class="site">
+{% for flower in flowers %}
+<a href="{% url 'flowers:flower-detail' flower.pk %}">Flower Detail</a>
+<img style="width:200px; height:200px" src="{{ flower.image_flower.url }}"><br>
+   <b> {{ flower.name_f }} </b><hr>
+{% endfor %}
+</div>
+<div class="pagination">
+            <span class="step-links">
+                {% if flowers.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ flowers.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ flowers.number }} of {{ flowers.paginator.num_pages }}.
+                </span>
+
+                {% if flowers.has_next %}
+                    <a href="?page={{ flowers.next_page_number }}">next</a>
+                    <a href="?page={{ flowers.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock content %}

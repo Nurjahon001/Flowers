@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home  {% endblock title %}
+
+{% block content %}
+<h2>Landing page</h2>
+{% if user.is_authenticated %}
+    <p><a href="{% url 'flowers:flower-list' %}">Flowers</a></p>
+    <p><a href="{% url 'users:logout' %}">Logout</a></p>
+    <p><a href="{% url 'users:regis' %}">Register</a></p>
+    <p><a href="{% url 'users:profile' %}">Profile</a></p>
+
+{% else %}
+    <p><a href="{% url 'flowers:flower-list' %}">Flowers</a></p>
+    <p><a href="{% url 'users:logout' %}">Logout</a></p>
+    <p><a href="{% url 'users:regis' %}">Register</a></p>
+{% endif %}
+
+{% endblock content %}

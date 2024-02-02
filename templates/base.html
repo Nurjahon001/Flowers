@@ -1,0 +1,33 @@
+{% load static %}
+
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+
+    <title>{% block title %} Flowers Blog  {% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<style>
+        img{
+        width:200px;
+        height:200px;
+        }
+</style>
+</head>
+<body>
+<h1>Flowers Blog</h1>
+<a href="{% url 'home' %}">Home Page</a>
+
+
+{% block content %}
+
+
+
+{% endblock content %}
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Flower-detail  {% endblock title %}
+
+{% block content %}
+<h2>Landing page</h2>
+<img  style="width:200px; height:200px;" src="{{  flower.image_flower.url }}"><br>
+{{ flower.name_f }} <br>
+{{ flower.symbolism }} <br>
+{{ flower.price }} <br>
+{{ flower.description }} <br>
+{{ flower.create_at }} <br>
+<a href="{% url 'flowers:flower-list' %}">Flowers</a> <hr>
+<h3>Add a Review</h3>
+<form method="post" action="{% url 'flowers:flower-detail' pk=flower.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+</form>
+{% for review in flower.flower_review.all %}
+<p><a href="{% url 'users:profile' %}">{{ user.username }}:</a></p> <b>{{ review.star_given }} stars |{{ review.create_at }}</b><br>
+{{ review.comment }}<br> <br>
+
+
+
+{% endfor %}
+
+
+{% endblock content %}
